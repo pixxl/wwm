@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<questions>
+    <Eur_50 id="50">
+        <question id="1">
+            <text>Wie heißt die Hauptstadt von Niedersachsen?</text>
+            <answers>
+                <answer solution="true">Hannover</answer>
+                <answer>Braunschweig</answer>
+                <answer>München</answer>
+                <answer>Hannoversch-Münden</answer>
+            </answers>
+        </question>
+    
+        <question id="2">
+            <text>Wieviele Ecken hat ein Viereck?</text>
+            <answers>
+                <answer solution="true">4</answer>
+                <answer >7</answer>
+                <answer>3</answer>
+                <answer>12</answer>            
+            </answers>
+        </question>
+    </Eur_50>
+    
+    <Eur_100 id="100">
+        <question id="1">
+            <text>Wer ist der Meister von Obi-Wan Kenobi?</text>
+            <answers>
+                <answer>Yoda</answer>
+                <answer solution="true">Qui-Gonn Jinn</answer>
+                <answer>Luke Skywalker</answer>
+                <answer>Mace Windu</answer>
+            </answers>
+        </question>
+    
+        <question id="2">
+            <text>Wie heißen Gru's Helfer?</text>
+            <answers>
+                <answer>Champions</answer>
+                <answer >Maxions</answer>
+                <answer>Lampions</answer>
+                <answer solution="true">Minions</answer>            
+            </answers>
+        </question>
+    </Eur_100>
+    
+</questions>
+

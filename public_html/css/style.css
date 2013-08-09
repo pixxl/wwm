@@ -1,0 +1,52 @@
+/* 
+    Document   : style
+    Created on : 09.08.2013, 08:32:46
+    Author     : angel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body { 
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    background-color: #081245;
+    color: #ffffff;
+    vertical-align: middle;
+}
+
+div {
+    
+}
+
+header {
+    
+}
+
+header img#logo{
+    width: 500px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.question {
+    background-image: url(../res/img_question.png);
+    background-repeat: no-repeat;
+    background-position: center;    
+    height: 100px;
+    margin: auto;
+    color: red;
+}
+
+section table {
+    margin: auto;    
+}
+
+section table tr td {
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
