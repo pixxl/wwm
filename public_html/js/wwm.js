@@ -22,7 +22,7 @@ function draw() {
         url: 'xml/catalog.xml',
         dataType: 'xml',
         success: function(data) {
-            $(data).find('questions Eur_100 question[id="' + index + '"]').each(function() {
+            $(data).find('questions Eur_50 question[id="' + index + '"]').each(function() {
                 var question = $(this).find('text').text();
                 var id = $(this).attr('id');
 
@@ -38,11 +38,28 @@ function draw() {
                     //console.log($(this).text());
                 }));
 
+                // Originalausgabe
                 $('.questions ul').append(
                         $('<li />', {
                     text: '(ID: ' + id + ') ' + question
                 })
                         );
+
+                // WWM FRAGEN
+                $('.question').append(
+                        $('<h1 />', {
+                    text: question
+                })
+                        );
+
+                // WWM ANTWORTEN            
+                $('.table_answers').find('tbody')
+                        .append($('<tr>')
+                        .append($('<td>', {
+                        text: answers
+                        })
+                        
+                        ));
 
                 // Ausgabe Array Browser
                 $(answers).each((function() {
@@ -62,4 +79,5 @@ function draw() {
 
 function resetCanvas() {
     $('.questions ul li').remove()
-};
+}
+;

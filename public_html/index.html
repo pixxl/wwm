@@ -7,18 +7,52 @@ and open the template in the editor.
     <head>
         <title>Wer wird Millionär?</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/style.css" rel="stylesheet" />
     </head>
     <body onload="init();">
         <script src="js/libs/jquery-1.9.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/wwm.js"></script>
-        
-        <div>Wer wird Millionär?</div>
-        
-        <div class="questions">
-            <ul></ul>           
-        </div>
-        
-        <div class="navigation"><input type="button" value="Weiter" id="btn_weiter" />
-        <input type="button" value="Löschen" id="btn_delete" /></div>
+
+        <header>
+            <img src="res/wwm_logo.png" id="logo" />
+        </header>
+
+        <section>
+
+            <!-- background-image -->
+            <div class="question">
+                
+            </div>
+            
+            <!-- table with answers -->
+            <div class="answers">
+                <table class="table_answers"></table>
+                
+                <!--
+                <table class="table_answers">
+                    <tr>
+                        <td>A: Antwort 1</td>
+                        <td>B: Antwort 2</td>
+                    </tr>
+                    <tr>
+                        <td>C: Antwort 3</td>
+                        <td>D: Antwort 4</td>
+                    </tr>
+                </table>-->
+            </div>
+
+            <!-- jquery questions
+            <div class="questions">
+                <ul></ul>           
+            </div>-->
+
+            <!-- buttons -->
+            <div class="navigation"><input type="button" value="Weiter" id="btn_weiter" />
+                <input type="button" value="Löschen" id="btn_delete" /></div>
+
+
+        </section>
     </body>
 </html>
+
+

@@ -7,9 +7,10 @@
 */
 
 body { 
+    font-family: Helvetica;
+    font-weight: normal;
     margin: 0;
     padding: 0;
-    display: block;
     text-align: center;
     background-color: #081245;
     color: #ffffff;
@@ -36,7 +37,7 @@ header img#logo{
     background-position: center;    
     height: 100px;
     margin: auto;
-    color: red;
+    font-size: 14px;
 }
 
 section table {
@@ -47,6 +48,12 @@ section table tr td {
     padding-top: 20px;
     padding-right: 15px;
     padding-left: 15px;
+    background-image: url(../res/img_answer.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height:52px;
+    width:558px;
+    text-align: left;
 }
 
 
