@@ -9,6 +9,11 @@ function init() {
     btn_weiter.addEventListener("click", fwd, false);
     var btn_delete = document.getElementById("btn_delete");
     btn_delete.addEventListener("click", resetCanvas, false);
+
+    $('.answers td').click(function() {
+        $('td[id!='+$(this).attr('id')+']').removeClass('selectedQuestion');
+        $(this).toggleClass('selectedQuestion');
+    });
 }
 
 function fwd() {
@@ -50,30 +55,24 @@ function draw() {
                     text: question
                 })
                         );
-                 var i = 0;          
+                var i = 0;
                 // WWM ANTWORTEN            
                 $(answers).each(function() {
-                    $('.answers table tbody tr td[id='+i+']').html($(answers[i]).text());
+                    $('.answers table tbody tr td[id=' + i + ']').html($(answers[i]).text());
                     i++;
-                })
-                        
-                // Ausgabe Array Browser
-//                $(answers).each((function() {
-//                    $('.questions ul').append(
-//                            $('<li />', {
-//                        text: $(this).text()
-//                    })
-//                            );
-//                }));
+                });
             });
         },
         error: function() {
             $('.questions').text('Failed to get questions');
         }
+
+
     });
 }
 
 function resetCanvas() {
     index = 1;
-    draw();  
-};
+    draw();
+}
+;
