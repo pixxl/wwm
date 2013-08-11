@@ -38,6 +38,7 @@ header img#logo{
     height: 100px;
     margin: auto;
     font-size: 14px;
+    padding-top: 45px;
 }
 
 section table {
@@ -45,9 +46,9 @@ section table {
 }
 
 section table tr td {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-right: 15px;
-    padding-left: 15px;
+    padding-left: 70px;
     background-image: url(../res/img_answer.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -55,5 +56,3 @@ section table tr td {
     width:558px;
     text-align: left;
 }
-
-

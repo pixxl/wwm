@@ -12,7 +12,6 @@ function init() {
 }
 
 function fwd() {
-    resetCanvas();
     index++;
     draw();
 }
@@ -46,29 +45,26 @@ function draw() {
                         );
 
                 // WWM FRAGEN
-                $('.question').append(
+                $('.question').html(
                         $('<h1 />', {
                     text: question
                 })
                         );
-
+                 var i = 0;          
                 // WWM ANTWORTEN            
-                $('.table_answers').find('tbody')
-                        .append($('<tr>')
-                        .append($('<td>', {
-                        text: answers
-                        })
+                $(answers).each(function() {
+                    $('.answers table tbody tr td[id='+i+']').html($(answers[i]).text());
+                    i++;
+                })
                         
-                        ));
-
                 // Ausgabe Array Browser
-                $(answers).each((function() {
-                    $('.questions ul').append(
-                            $('<li />', {
-                        text: $(this).text()
-                    })
-                            );
-                }));
+//                $(answers).each((function() {
+//                    $('.questions ul').append(
+//                            $('<li />', {
+//                        text: $(this).text()
+//                    })
+//                            );
+//                }));
             });
         },
         error: function() {
@@ -78,6 +74,6 @@ function draw() {
 }
 
 function resetCanvas() {
-    $('.questions ul li').remove()
-}
-;
+    index = 1;
+    draw();  
+};
