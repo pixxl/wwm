@@ -2,24 +2,42 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-var index = 0;
+var index = 1;
 
 function init() {
     var btn_weiter = document.getElementById("btn_weiter");
     btn_weiter.addEventListener("click", fwd, false);
     var btn_delete = document.getElementById("btn_delete");
     btn_delete.addEventListener("click", resetCanvas, false);
-
+    
+    myAudio = new Audio('res/audio/wwm_all/publikumsjoker_loop.mp3'); 
+    myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+    }, false);
+    myAudio.play();
+    
     $('.answers td').click(function() {
-        $('td[id!='+$(this).attr('id')+']').removeClass('selectedQuestion');
+        $('td[id!=' + $(this).attr('id') + ']').removeClass('selectedQuestion');
         $(this).toggleClass('selectedQuestion');
     });
+    
+    draw();
 }
 
+
 function fwd() {
+    $('.answers td').removeClass('selectedQuestion');
     index++;
     draw();
 }
+
+function resetCanvas() {
+    $('.answers td').removeClass('selectedQuestion');
+    index = 1;
+    draw();
+}
+;
 
 function draw() {
     $.ajax({
@@ -28,26 +46,9 @@ function draw() {
         success: function(data) {
             $(data).find('questions Eur_50 question[id="' + index + '"]').each(function() {
                 var question = $(this).find('text').text();
-                var id = $(this).attr('id');
 
-                $(this).find("answer[solution='true']").each(function() {
-                    //console.log($(this).text());
-                });
-
-                // Array
+                // Array Antworten
                 var answers = $(this).find("answer").get();
-
-                // Ausgabe Array
-                $(answers).each((function() {
-                    //console.log($(this).text());
-                }));
-
-                // Originalausgabe
-                $('.questions ul').append(
-                        $('<li />', {
-                    text: '(ID: ' + id + ') ' + question
-                })
-                        );
 
                 // WWM FRAGEN
                 $('.question').html(
@@ -55,24 +56,27 @@ function draw() {
                     text: question
                 })
                         );
-                var i = 0;
+
                 // WWM ANTWORTEN            
+                var i = 0;
                 $(answers).each(function() {
                     $('.answers table tbody tr td[id=' + i + ']').html($(answers[i]).text());
                     i++;
                 });
+
+                $(this).find("answer[solution='true']").each(function() {
+
+                });
+
+
             });
         },
         error: function() {
             $('.questions').text('Failed to get questions');
         }
-
-
+        
+        
     });
+    
+    
 }
-
-function resetCanvas() {
-    index = 1;
-    draw();
-}
-;
