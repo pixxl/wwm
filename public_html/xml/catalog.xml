@@ -29,7 +29,7 @@ and open the template in the editor.
     </Eur_50>
     
     <Eur_100 id="100">
-        <question id="1">
+        <question id="3">
             <text>Wer ist der Meister von Obi-Wan Kenobi?</text>
             <answers>
                 <answer>Yoda</answer>
@@ -39,7 +39,7 @@ and open the template in the editor.
             </answers>
         </question>
     
-        <question id="2">
+        <question id="4">
             <text>Wie heißen Gru's Helfer?</text>
             <answers>
                 <answer>Champions</answer>

@@ -19,9 +19,9 @@ function init() {
     myAudio.play();
 
     // select answer onclick() 
-    $('.answers td').click(function() {
-        $('div[id!=' + $(this).attr('id') + ']').removeClass('selectedQuestion');
-        $(this).toggleClass('selectedQuestion');
+    $('.answer').click(function() {
+        $('div[id!=' + $(this).attr('id') + ']').removeClass('selected');
+        $(this).toggleClass('selected');
     });
 
     // draw() the first question 
@@ -33,7 +33,7 @@ function init() {
  * forwards through the questions and remove the highlight 
  */
 function fwd() {
-    $('.answers td').removeClass('selectedQuestion');
+    $('.answer').removeClass('selected');
     index++;
     draw();
 }
@@ -42,7 +42,7 @@ function fwd() {
  *  switch to the first question with index = 1 and remove the highlight 
  */
 function resetCanvas() {
-    $('.answers td').removeClass('selectedQuestion');
+    $('.answer').removeClass('selected');
     index = 1;
     draw();
 }
@@ -72,17 +72,19 @@ function draw() {
                 // WWM Answers           
                 var i = 0;
                 $(answers).each(function() {
-                    $('.answers table tbody tr td div[id=' + i + ']').html($(answers[i]).text());
+                    $(' table tbody tr td div[id=' + i + ']').html($(answers[i]).text());
                     i++;
                 });
 
                 // Prüft ob Antwort richtig
-                var i = 0;
+               /* var i = 0;
                 $(answers).find('.answers table tbody tr td div[id=' + i + ']').each("answer[solution='true']", function() {
                     alert("richtig");
-                }) ;
+                }) ;*/
                 
+                var index = $(this).find("answer[solution='true']").index();
                 
+               
                 
 //                $(this).find("answer[solution='true']").each(function() {                    
 //                });

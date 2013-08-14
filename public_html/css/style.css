@@ -62,11 +62,14 @@ section table {
     padding: 0;
 }
 
-section table tr td {
+.answer {
     background-image: url(../res/img_answer.png);
     background-repeat: no-repeat;
     height:52px;
-    width:558px;    
+    width:558px;   
+    margin: auto;
+    font-size: 20px;
+    padding-top: 15px;
 }
 
 .answers {
@@ -75,7 +78,7 @@ section table tr td {
     text-align: left;
 }
 
-.selectedQuestion{
+.selected{
     background-image: url(../res/img_answer_choose.png); 
 }
 
