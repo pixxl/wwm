@@ -15,8 +15,18 @@ body {
     background-color: #081245;
     color: #ffffff;
     vertical-align: middle;
+
+    /* disable user select */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
+
+/**
+ * JOKER BUTTONS
+ */
 header .joker {    
     text-align: left;
     list-style-type: none; 
@@ -40,11 +50,47 @@ header a:hover img {
     top:-60px
 }
 
+/* Used Joker */
+.usedJoker {
+    top:-60px;
+}
+
 /**
  * SECTION
  */
+.image_content {
+    width: 100%;
+}
+
+.image_content td {
+    width: 15%;
+}
+
+.image_content td#logo {
+    width: 70%;
+}
+
+.prizeTable {
+    border-left: 2px dotted #6676c5;
+    font-size: 18px;    
+}
+
+.highlightActualPrize {
+    color: yellow;        
+}
+
 section {
     clear: both;
+}
+
+section img {
+
+}
+
+section ul li {
+    list-style: none;
+    text-align: left;
+    padding-left: 50px;    
 }
 
 .question {
@@ -55,6 +101,7 @@ section {
     margin: auto;
     font-size: 14px;
     padding-top: 45px;
+    clear: both;
 }
 
 section table {
@@ -70,23 +117,26 @@ section table {
     margin: auto;
     font-size: 20px;
     padding-top: 15px;
-}
-
-.answers {
-    padding-left: 40px;
-    cursor: pointer;
     text-align: left;
+    padding-left: 40px;    
+    cursor: pointer;
 }
 
-.selected{
+.selectedAnswer {
     background-image: url(../res/img_answer_choose.png); 
+    color: #000;
+}
+
+.correctAnswer {
+    background-image: url(../res/img_answer_right.png); 
+    color: #000;
 }
 
 /* 
  * BUTTON 
  */
-input#btn_weiter {
-    background-color: #081245;
+input#btn_loesung {
+    background-color: red;
 }
 
 input {
@@ -110,4 +160,5 @@ input {
         rgba(255,255,255,0.3) 50%,
         rgba(255,255,255,0) 51%,
         rgba(255,255,255,0.2) 100%);
+    cursor: pointer;
 }

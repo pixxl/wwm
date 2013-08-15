@@ -3,11 +3,9 @@
 To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
-
-
 <questions>
     <Eur_50 id="50">
-        <question id="1">
+        <question id="0">
             <text>Wie heißt die Hauptstadt von Niedersachsen?</text>
             <answers>
                 <answer solution="true">Hannover</answer>
@@ -15,9 +13,10 @@ and open the template in the editor.
                 <answer>München</answer>
                 <answer>Hannoversch-Münden</answer>
             </answers>
+            <prize>€ 50</prize>
         </question>
     
-        <question id="2">
+        <question id="1">
             <text>Wieviele Ecken hat ein Viereck?</text>
             <answers>
                 <answer solution="true">4</answer>
@@ -25,11 +24,12 @@ and open the template in the editor.
                 <answer>3</answer>
                 <answer>12</answer>            
             </answers>
+            <prize>€ 50</prize>
         </question>
     </Eur_50>
     
     <Eur_100 id="100">
-        <question id="3">
+        <question id="2">
             <text>Wer ist der Meister von Obi-Wan Kenobi?</text>
             <answers>
                 <answer>Yoda</answer>
@@ -37,9 +37,10 @@ and open the template in the editor.
                 <answer>Luke Skywalker</answer>
                 <answer>Mace Windu</answer>
             </answers>
+            <prize>€ 100</prize>
         </question>
     
-        <question id="4">
+        <question id="3">
             <text>Wie heißen Gru's Helfer?</text>
             <answers>
                 <answer>Champions</answer>
@@ -47,8 +48,7 @@ and open the template in the editor.
                 <answer>Lampions</answer>
                 <answer solution="true">Minions</answer>            
             </answers>
+            <prize>€ 100</prize>
         </question>
-    </Eur_100>
-    
+    </Eur_100>    
 </questions>
-

@@ -2,51 +2,87 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-var index = 1;
+var index = 0;
+var answerPrefix = ['A', 'B', 'C', 'D'];
+
 
 function init() {
-    var btn_weiter = document.getElementById("btn_weiter");
-    btn_weiter.addEventListener("click", fwd, false);
-    var btn_delete = document.getElementById("btn_delete");
-    btn_delete.addEventListener("click", resetCanvas, false);
+    /* Buttons */
+    $('#btn_loesung').click(loesungAnzeigen);
+    $('#btn_weiter').click(fwd);
+    $('#btn_delete').click(resetCanvas);
+
+    /* Jokers */
+    $('#joker_fifty').click(jokerUsed).click(fiftyJoker);
+    $('#joker_audience').click(jokerUsed);
+    $('#joker_pastor').click(jokerUsed);
 
     // starts audio on init() 
-    myAudio = new Audio('res/audio/wwm_all/publikumsjoker_loop.mp3');
-    myAudio.addEventListener('ended', function() {
-        this.currentTime = 0;
-        this.play();
-    }, false);
-    myAudio.play();
+//    myAudio = new Audio('res/audio/wwm_all/publikumsjoker_loop.mp3');
+//    myAudio.addEventListener('ended', function() {
+//        this.currentTime = 0;
+//        this.play();
+//    }, false);
+//    myAudio.play();
 
     // select answer onclick() 
     $('.answer').click(function() {
-        $('div[id!=' + $(this).attr('id') + ']').removeClass('selected');
-        $(this).toggleClass('selected');
+        $('div[id!=' + $(this).attr('id') + ']').removeClass('selectedAnswer');
+        $(this).toggleClass('selectedAnswer');
     });
 
-    // draw() the first question 
     draw();
 }
 
 
+
+function jokerUsed() {
+    $(this).toggleClass('usedJoker');
+}
+
 /* 
- * forwards through the questions and remove the highlight 
+ *  forwards through the questions and remove the highlight 
  */
 function fwd() {
-    $('.answer').removeClass('selected');
-    index++;
-    draw();
+    clearSelections();
+    if (index <= 14) {
+        index++;
+        draw();
+    }
+}
+
+function clearSelections() {
+    $('.answer').removeClass('selectedAnswer correctAnswer');
+
 }
 
 /**
  *  switch to the first question with index = 1 and remove the highlight 
  */
 function resetCanvas() {
-    $('.answer').removeClass('selected');
+    clearSelections();
     index = 1;
     draw();
 }
-;
+
+/*
+ * shows the correct answer
+ */
+function loesungAnzeigen() {
+    $.ajax({
+        url: 'xml/catalog.xml',
+        dataType: 'xml',
+        success: function(data) {
+            $(data).find('questions question[id="' + index + '"]').each(function() {
+                var index = $(this).find("answer[solution='true']").index();
+                $(' table tbody tr td div[id=' + index + ']').toggleClass('correctAnswer');
+            });
+        },
+        error: function() {
+            $('.questions').text('Failed to get the correct Answer');
+        }
+    });
+}
 
 /** 
  * draw a question and 4 answers out of the catalog.xml
@@ -56,7 +92,7 @@ function draw() {
         url: 'xml/catalog.xml',
         dataType: 'xml',
         success: function(data) {
-            $(data).find('questions Eur_50 question[id="' + index + '"]').each(function() {
+            $(data).find('questions question[id="' + index + '"]').each(function() {
                 var question = $(this).find('text').text();
 
                 // array with all answers
@@ -72,32 +108,49 @@ function draw() {
                 // WWM Answers           
                 var i = 0;
                 $(answers).each(function() {
-                    $(' table tbody tr td div[id=' + i + ']').html($(answers[i]).text());
+                    $(' table tbody tr td div[id=' + i + ']').html(answerPrefix[i] + ':&nbsp;&nbsp; ' + $(answers[i]).text());
                     i++;
                 });
 
-                // Prüft ob Antwort richtig
-               /* var i = 0;
-                $(answers).find('.answers table tbody tr td div[id=' + i + ']').each("answer[solution='true']", function() {
-                    alert("richtig");
-                }) ;*/
-                
-                var index = $(this).find("answer[solution='true']").index();
-                
-               
-                
-//                $(this).find("answer[solution='true']").each(function() {                    
-//                });
-
+                // colores actual WWM Prize
+                $('.prizeTable ul li[id="' + index + '"]').addClass('highlightActualPrize');
 
             });
         },
         error: function() {
             $('.questions').text('Failed to get questions');
         }
-
-
     });
 
+}
+
+
+function fiftyJoker() {
+    $.ajax({
+        url: 'xml/catalog.xml',
+        dataType: 'xml',
+        success: function(data) {
+            $(data).find('questions question[id="' + index + '"]').each(function() {
+
+                // array with all answers
+                var answers = $(this).find("answer").get();
+
+                // WWM Answers           
+                var i = 0;
+                var counter = 0;
+                $(answers).each(function() {
+                    if($(this).attr('solution') !== 'true' && counter < 2) {
+                        $(' table tbody tr td div[id=' + i + ']').html('');
+                        counter++;
+                    }
+                    i++;
+                });
+            });
+        },
+        error: function() {
+            $('.questions').text('Failed to get the fifty Joker');
+        }
+    });
 
 }
+
